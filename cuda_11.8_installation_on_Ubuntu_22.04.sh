@@ -70,20 +70,3 @@ sudo chmod a+r /usr/local/cuda-11.8/lib64/libcudnn*
 # Finally, to verify the installation, check
 nvidia-smi
 nvcc -V
-
-# install Pytorch (an open source machine learning framework)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
-# copy the following files into the cuda toolkit directory.
-sudo cp -P ${CUDNN_FOLDER}/include/cudnn.h /usr/local/cuda-11.7/include/
-sudo cp -P ${CUDNN_FOLDER}/include/cudnn_version.h /usr/local/cuda-11.7/include/
-sudo cp -P ${CUDNN_FOLDER}/lib/libcudnn* /usr/local/cuda-11.7/lib64/
-sudo chmod a+r /usr/local/cuda-11.7/lib64/libcudnn*
-rm -r ${CUDNN_FOLDER}
-
-# restart if necessary
-sudo reboot now
-
-# Finally, to verify the installation, check (restart if the following commands give error)
-nvidia-smi
-nvcc -V
